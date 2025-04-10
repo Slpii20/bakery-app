@@ -1,14 +1,36 @@
 @extends('templating_login')
 
-@section('judul_halaman', 'Login | Aplikasi Pengelolaan Data Kue Kering')
+@section('judul_halaman', 'Login | KUEKU MANAGER')
 
 @section('konten')
     <div class="card shadow-lg border-0 rounded-lg mt-5">
         <div class="card-header"><h3 class="text-center font-weight-light my-2">Login</h3></div>
             <div class="card-body">
-                @if(session('success'))
+            @if(session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+    @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                @if(session('fail'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('fail') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
@@ -40,7 +62,7 @@
                         </div>
                     </div>
                     <div class="mb-3 d-grid mx-auto ">
-                        <input type="submit" class="btn btn-primary" value="Login">
+                        <input type="submit" class="btn btn-danger" value="Login">
                     </div>
                 </form>
             </div>
@@ -49,8 +71,9 @@
             </div>
         </div>
     </div>
-
 @endsection
+
+
 
 
 

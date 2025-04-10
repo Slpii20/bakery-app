@@ -1,5 +1,5 @@
 @extends('master')
-@section('judul_halaman', 'BERANDA KUEKU MANAGER | Aplikasi Pengelolaan Data Kue Kering')
+@section('judul_halaman', 'beranda Data Produk | Aplikasi Pengelolaan Data Kue Kering')
 
 @section('konten')
     <h1 class="mt-4">Beranda</h1>
@@ -19,11 +19,6 @@
                 </p>
             </div>
         </div>
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
         <!-- Section-->
         <section class="py-5 mt-4">
             <h2 class="fw-bold text-center"> Macam Data Kue Kering </h2>
@@ -170,8 +165,5 @@
                 </div>
             </div>
         </section>
-
     </div>
-
-
 @endsection

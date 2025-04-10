@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('judul_halaman', 'UBAH DATA KUEKU MANAGER | Aplikasi Pengelolaan Data Kue Kering')
+@section('judul_halaman', 'ubah data kue | Aplikasi Pengelolaan Data Kue Kering')
 
 @section('konten')
     <h1 class="mt-4">ubah data produk</h1>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="mb-4 row">
-                    <label for="text" class="col-sm-2 col-form-label">harga kue</label>
+                    <label for="text" class="col-sm-2 col-form-label">harga_kue</label>
                     <div class="col-sm-10">
                         <input name="harga_kue" value="{{$produk->harga_kue}}" class="form-control " type="number" placeholder="Masukkan harga" id="text" aria-label=".form-control-lg example">
                     </div>

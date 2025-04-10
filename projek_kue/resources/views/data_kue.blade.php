@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('judul_halaman', 'DATA KUEKU MANAGER | Aplikasi Pengelolaan Data Kue Kering')
+@section('judul_halaman', ' Data Kue | Aplikasi Pengelolaan Data Kue Kering')
 
 @section('konten')
     <h1 class="mt-4">data produk</h1>
@@ -29,6 +29,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+
                         <th>nama kue</th>
                         <th>deskripsi</th>
                         <th>harga</th>
@@ -43,7 +44,7 @@
 
                             <td>{{$item->nama_kue}}</td>
                             <td>{{$item->deskripsi_kue}}</td>
-                            <td>{{ 'Rp' . number_format($item->harga_kue, 0, ',', '.') }}</td>
+                            <td>{{$item->harga_kue}}</td>
                             <td>{{$item->stok}}</td>
 
                             <td>

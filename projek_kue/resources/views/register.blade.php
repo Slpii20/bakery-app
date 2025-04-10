@@ -1,6 +1,6 @@
 @extends('templating_login')
 
-@section('judul_halaman', 'REGISTRASI USER KUEKU MANAGER | Aplikasi Pengelolaan Data Produk')
+@section('judul_halaman', 'Registrasi User | Aplikasi Pengelolaan Data Produk')
 
 @section('konten')
     <div class="card shadow-lg border-0 rounded-lg my-5">

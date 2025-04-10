@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class AuthenController extends Controller
 {
@@ -17,19 +18,18 @@ class AuthenController extends Controller
     public function registerUser(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'email'=>'required|email:users',
-            'password'=>'required|min:8|max:12'
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|max:12',
         ]);
 
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password); // Hash password sebelum disimpan
 
-        $result = $user->save();
-        if($result){
-            return back()->with('success','You have registered successfully.');
+        if ($user->save()) {
+            return back()->with('success', 'Registrasi berhasil.');
         } else {
             return back()->with('fail', 'Terjadi kesalahan.');
         }
@@ -50,12 +50,12 @@ class AuthenController extends Controller
         if($user){
             if(Hash::check($request->password, $user->password)){
                 $request->session()->put('loginId', $user->id);
-                return redirect('/beranda');
+                return redirect('/'); // Corrected redirect path
             } else {
-                return back()->with('fail','Password not match!');
+                return back()->with('fail','Password does not match!');
             }
         } else {
-            return back()->with('fail','This email is not register.');
+            return back()->with('fail','This email is not registered.');
         }        
     }
     //// Dashboard

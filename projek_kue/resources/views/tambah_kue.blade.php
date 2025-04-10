@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('judul_halaman', 'TAMBAH DATA KUEKU MANAGER | Aplikasi Pengelolaan Data Kue Kering')
+@section('judul_halaman', 'Tambah Data Kue | Aplikasi Pengelolaan Data Kue Kering')
 
 
 @section('konten')

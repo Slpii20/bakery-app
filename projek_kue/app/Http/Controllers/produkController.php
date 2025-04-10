@@ -12,7 +12,7 @@ class produkController extends Controller
      */
     public function index()
 {
-    $produk = produk::all(); // Gunakan huruf besar untuk model 'Produk'
+    $produk = Produk::all(); // Gunakan huruf besar untuk model 'Produk'
 
     return view('data_kue', compact('produk')); // Perbaikan pada compact()
 }

@@ -30,16 +30,16 @@
         <link rel="stylesheet" href="{{ asset('template-shop/dist/css/styles.css') }}">
     </head>
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-danger">
-            <a class="navbar-brand ps-3 text-capitalize fw-bold" href="/">KUEKU MANAGER</a>
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
-                <i class="fas fa-bars"></i>
-            </button>
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3 text-capitalize fw-bold" href="/"> MACAM KUE KERING</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+
+            <!-- Navbar-->
             <ul class="navbar-nav d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user fa-fw"></i>
-                    </a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         @guest
                             <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
@@ -68,19 +68,19 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Beranda
                             </a>
-                            @if(Auth::user())
+                            @auth
                                 <a class="nav-link" href="/data_kue">
                                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                     data produk
                                 </a>
-                            @endif
+                            @endauth
                         </div>
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
-
+                   
                     @guest
                         <div class="alert alert-warning rounded-0" role="alert">
                             Anda harus <a href="{{ route('login') }}" class="alert-link">login</a> atau <a href="{{ route('register') }}" class="alert-link">register</a> terlebih dahulu untuk mengakses data produk.
@@ -89,38 +89,14 @@
 
                     <div class="container-fluid px-4 text-capitalize">
                         <!-- bagian konten -->
-                        @if(Auth::check())
-                            <p>Selamat datang, {{ Auth::user()->name }}!</p>
-                        @else
-                            <p>Silakan login</p>
-                        @endif
 	                    @yield('konten')
                     </div>
                 </main>
-                <footer class="py-4 bg-danger mt-auto ">
-                    <div class="container-fluid px-3" >
-                        <div class="row text-light gap-3">
-                            <div class="col">
-                              <h6>Tentang</h6>
-                              <p class="small"><strong>KUEKU MANAGER</strong> adalah aplikasi manajemen data yang
-                                 dirancang khusus untuk  pengelolaan penjualan kue kering di toko. Dengan fitur pemilik usaha untuk mencatat, mengedit, dan
-                                menghapus data produk mendukung pencatatan dan mempermudah pemantauan ketersediaan produk.
-                              </p>
-                              <h6>HUBUNGI KAMI</h6>
-                              <h8>Klik : </h8>
-                                  <a href="https://wa.me/6282366656743" target="_blank" style="text-decoration: none; margin: 0 10px;">
-                                      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="40" alt="WhatsApp">
-                                  </a>
-                                  <a href="https://www.instagram.com/fle.slpii" target="_blank" style="text-decoration: none; margin: 0 10px;">
-                                      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" width="40" alt="Instagram">
-                                  </a>
-                            </div>
-                            <div class="col">
-                                <h6>LOKASI</h6>
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.168755049892!2d112.31908827412548!3d-8.08426608082519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7893ebbab3e161%3A0xa8678f8ba8253eb4!2sSMK%20PGRI%20Wlingi!5e0!3m2!1sid!2sid!4v1741225955946!5m2!1sid!2sid" width="450" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            </div>
+                <footer class="py-4 bg-light mt-auto text-capitalize">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; MACAM MACAM KUE KERING<sup>2</sup> 2025</div>
                         </div>
-
                     </div>
                 </footer>
             </div>
