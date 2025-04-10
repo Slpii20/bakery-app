@@ -26,17 +26,21 @@ class LoginController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        $credential = $request->only('email','password');
 
-            return redirect('/');
-        };
-
+        \Log::warning('Login failed for email: ' . $request->email); // Tambahkan log untuk debugging
         return back()->withErrors([
             'email' => 'Kredensial yang diberikan tidak cocok dengan data kami.',
         ])->onlyInput('email');
     }
 
+    public function logout(Request $request)
+    {
+        \Log::info('User logged out: ' . Auth::user()->email); // Tambahkan log
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-
+        return redirect('/')->with('success', 'Anda telah berhasil logout.');
+    }
 }

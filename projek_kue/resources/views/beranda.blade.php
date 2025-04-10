@@ -19,6 +19,11 @@
                 </p>
             </div>
         </div>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <!-- Section-->
         <section class="py-5 mt-4">
             <h2 class="fw-bold text-center"> Macam Data Kue Kering </h2>

@@ -29,7 +29,6 @@
                 <thead>
                     <tr>
                         <th>No</th>
-
                         <th>nama kue</th>
                         <th>deskripsi</th>
                         <th>harga</th>

@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\produkController;
 use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\AuthenController;
 
 
 /*
@@ -19,16 +20,8 @@ use App\Http\Controllers\TemplateController;
 |
 */
 
-// Routing halaman register
-Route::get('/register', [RegistrasiController::class, 'create'])->name('register');
-Route::post('/register', [RegistrasiController::class, 'store'])->name('register.submit');
-
-// Routing halaman login
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login.submit');
-
 // Routing halaman logout
-Route::post('/logout', function () {
+Route::get('/logout', function () {
     auth()->logout();
     request()->session()->invalidate();
     request()->session()->regenerateToken();
@@ -57,6 +50,15 @@ Route::get('/hapus_kue/{id}', [ProdukController::class, 'destroy']);
 // Routing ubah produk (Harus login)
 Route::get('/ubah_kue/{id}', [ProdukController::class, 'edit']);
 Route::post('/ubah_kue/{id}', [ProdukController::class, 'update']);
+
+Route::controller(AuthenController::class)->group(function(){
+    Route::get('/register', [RegistrasiController::class, 'create'])->name('register');
+    Route::post('/register', [RegistrasiController::class, 'store'])->name('register.submit');
+
+    // Routing halaman login
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate'])->name('login.submit');
+});
 
 
 

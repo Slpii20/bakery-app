@@ -9,7 +9,7 @@ class produk extends Model
 {
     use HasFactory;
     protected $primary_key = 'id_kue';
-    protected $table = 'tb_kue';
+    protected $table = 'produk_kue';
     protected $guarded = [];
     public $timestamps = false;
 }
